@@ -5,4 +5,4 @@ Sistema capaz de realizar un análisis constante para la detección del uso corr
 Steps to run the project
 install the requirements pip install -r requirements.txt
 activate venv ./venv/Scripts/activate.bat
-run "python app.py"
+run "python run.py"
