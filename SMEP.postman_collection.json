@@ -628,6 +628,483 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Reservation",
+			"item": [
+				{
+					"name": "getReservation",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/reservation/636aa2a66686bfb5b74b71c5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reservation",
+								"636aa2a66686bfb5b74b71c5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteReservation",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/reservation/636aa2a66686bfb5b74b71c5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reservation",
+								"636aa2a66686bfb5b74b71c5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateReservation",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iduser\":1234,\r\n    \"idschedule\": 1234\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/reservation/636aa2a66686bfb5b74b71c5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reservation",
+								"636aa2a66686bfb5b74b71c5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getReservations",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createReservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iduser\":123,\r\n    \"idschedule\": 123\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/reservations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"reservations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supervisors",
+			"item": [
+				{
+					"name": "getSupervisor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisor",
+								"636aaa1ceae04cd6f87e5478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSupervisor",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisor",
+								"636aaa1ceae04cd6f87e5478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSupervisor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iduser\":123,\r\n    \"idlocation\": 1234,\r\n    \"fecharegistro\": \"16/09/2019\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisor",
+								"636aaa1ceae04cd6f87e5478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSupervisors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createReservation",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iduser\":123,\r\n    \"idlocation\": 123,\r\n    \"fecharegistro\": \"16/09/2019\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Incidents",
+			"item": [
+				{
+					"name": "getIncident",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/incident/636ab09937b7436b6ad289cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"incident",
+								"636ab09937b7436b6ad289cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteIncident",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/incident/636ab09937b7436b6ad289cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"incident",
+								"636ab09937b7436b6ad289cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateIncident",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idreservation\":1234,\r\n    \"iduser\":123,\r\n    \"idlocation\": 123,\r\n    \"idincidenttype\":123,\r\n    \"setimages\":\"Imagenes \"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/incident/636ab09937b7436b6ad289cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"incident",
+								"636ab09937b7436b6ad289cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getIncidents",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/incidents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"incidents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createIncident",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idreservation\":123,\r\n    \"iduser\":123,\r\n    \"idlocation\": 123,\r\n    \"idincidenttype\":123,\r\n    \"setimages\":\"Imagenes \"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/incidents",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"incidents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
