@@ -5,14 +5,35 @@ from flask_pymongo import PyMongo, ObjectId
 
 db = client.smep
 supervisor_collection = db.supervisor
+user_collection = db.users
+location_collection = db.locations
+
 @app.route('/supervisors', methods=['POST'])
 def createSupervisor():
-    id = supervisor_collection.insert_one({
-        'iduser':request.json['iduser'],
-        'idlocation':request.json['idlocation'],
-        'fecharegistro':request.json['fecharegistro']
-    }).inserted_id
-    return jsonify(str(id))
+    user = request.json['iduser']
+    location = request.json['idlocation']
+    if supervisor_collection.find_one({"iduser": {"$eq": user}, "idlocation":{"$eq": location}}):
+        return jsonify({"msg": 'Supervisor already exists'})
+    else:
+        if user_collection.find({"_id": {"$eq": user}}):
+            if location_collection.find({"_id": {"$eq": location}}):
+                id = supervisor_collection.insert_one({
+                    'iduser':user,
+                    'idlocation':location,
+                    'fecharegistro':request.json['fecharegistro']
+                }).inserted_id
+                location_collection.update_one({'_id':ObjectId(location)}, {'$set':{
+                    'idsupervisor':str(id)
+                }})
+                user_collection.update_one({'_id':ObjectId(user)}, {'$set':{
+                    'essupervisor':True
+                }})
+                return jsonify(str(id))
+            else:
+                return jsonify({"msg": 'Location does not exist'})
+        else:
+            return jsonify({"msg": 'User does not exists'})
+
 
 @app.route('/supervisors', methods=['GET'])
 def getSupervisors():

@@ -10,6 +10,7 @@ schedule_collection = db.schedules
 def createSchedule():
     id = schedule_collection.insert_one({
         'idlocation':request.json['idlocation'],
+        'hours':request.json['hours'],
         'descripcion':request.json['descripcion']
     }).inserted_id
     return jsonify(str(id))
@@ -21,6 +22,7 @@ def getSchedules():
         schedules.append({
             '_id': str(ObjectId(doc['_id'])),
             'idlocation':doc['idlocation'],
+            'hours':doc['hours'],
             'descripcion':doc['descripcion']
         })
     return (schedules)
@@ -32,6 +34,7 @@ def getSchedule(id):
     return jsonify({
             '_id': str(ObjectId(schedule['_id'])),
             'idlocation':schedule['idlocation'],
+            'hours':schedule['hours'],
             'descripcion':schedule['descripcion']
     })
 
@@ -44,6 +47,7 @@ def deleteSchedule(id):
 def updateSchedule(id):
     schedule_collection.update_one({'_id':ObjectId(id)}, {'$set':{
         'idlocation':request.json['idlocation'],
+        'hours':request.json['hours'],
         'descripcion':request.json['descripcion']
     }})
     return jsonify({"msg": 'Schedule updated'})

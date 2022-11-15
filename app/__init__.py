@@ -4,4 +4,4 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-from app import users, locations, incidenttypes, schedules, reservations, supervisors, incidents
+from app import users, locations, incidenttypes, schedules, reservations, supervisors, incidents, camera
