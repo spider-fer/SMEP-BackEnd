@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mongo:5.0.13
+    ports:
+      - 27017:27017
+  backend:
+    build: .
+    command: python -u run.py
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/backend
+    links:
+      - db
+ 

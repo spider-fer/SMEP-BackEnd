@@ -2,4 +2,4 @@ from pymongo import MongoClient
 
 DATABASE = MongoClient()['smep'] # DB_NAME
 DEBUG = True
-client = MongoClient('localhost', 27017)
+client = MongoClient('mongodb://db:27017/dockerdemo', 27017)
