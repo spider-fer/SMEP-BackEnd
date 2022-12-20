@@ -14,15 +14,16 @@ fecha_string = fecha.strftime("%d/%m/%Y")
 def createLocation():
     if location_collection.find_one({"nombre": {"$eq": request.json['nombre']}}):
         return jsonify({"msg": 'Location with that name already exists'})
-    id = location_collection.insert_one({
-        'nombre':request.json['nombre'],
-        'idsupervisor':"null",
-        'fecharegistro':fecha_string,
-        'cupousuarios': request.json['cupousuarios'],
-        'idhorario': "null",
-        'numusuarios': 0
-    }).inserted_id
-    return jsonify(str(id))
+    else:
+        id = location_collection.insert_one({
+            'nombre':request.json['nombre'],
+            'idsupervisor':"null",
+            'fecharegistro':fecha_string,
+            'cupousuarios': request.json['cupousuarios'],
+            'idhorario': "null",
+            'numusuarios': 0
+        }).inserted_id
+        return jsonify(str(id))
 
 @app.route('/locations', methods=['GET'])
 def getLocations():

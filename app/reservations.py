@@ -5,13 +5,23 @@ from flask_pymongo import PyMongo, ObjectId
 
 db = client.smep
 reservation_collection = db.reservation
+location_collection = db.locations
+user_collection = db.users
+
 @app.route('/reservations', methods=['POST'])
 def createReservation():
-    id = reservation_collection.insert_one({
-        'iduser':request.json['iduser'],
-        'idschedule':request.json['idschedule']
-    }).inserted_id
-    return jsonify(str(id))
+    locationid = request.json['idlocation']
+    user = request.json['iduser']
+    location = location_collection.find_one({'_id':ObjectId(locationid)})
+    cupousuarios = location['cupousuarios']
+    numusuarios = location['numusuarios']
+    if cupousuarios > numusuarios:
+        id = reservation_collection.insert_one({
+            'iduser':request.json['iduser'],
+            'idschedule':request.json['idschedule'],
+            'hora': request.json['hora'],
+            }).inserted_id
+        return jsonify(str(id))
 
 @app.route('/reservations', methods=['GET'])
 def getReservations():

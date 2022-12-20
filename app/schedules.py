@@ -5,15 +5,22 @@ from flask_pymongo import PyMongo, ObjectId
 
 db = client.smep
 schedule_collection = db.schedules
+location_collection = db.locations
 
 @app.route('/schedules', methods=['POST'])
 def createSchedule():
-    id = schedule_collection.insert_one({
-        'idlocation':request.json['idlocation'],
-        'hours':request.json['hours'],
-        'descripcion':request.json['descripcion']
-    }).inserted_id
-    return jsonify(str(id))
+    location = request.json['idlocation']
+    if location_collection.find({"_id": {"$eq": location}}):
+        id = schedule_collection.insert_one({
+            'idlocation':request.json['idlocation'],
+            'horarios':request.json['horarios']
+        }).inserted_id
+        location_collection.update_one({'_id':ObjectId(location)}, {'$set':{
+            'idhorario':str(id)
+        }})
+        return jsonify(str(id))
+    else:
+        return jsonify({"msg": 'Location id doesnt exist'})
 
 @app.route('/schedules', methods=['GET'])
 def getSchedules():
@@ -22,8 +29,7 @@ def getSchedules():
         schedules.append({
             '_id': str(ObjectId(doc['_id'])),
             'idlocation':doc['idlocation'],
-            'hours':doc['hours'],
-            'descripcion':doc['descripcion']
+            'horarios':doc['horarios']
         })
     return (schedules)
 
@@ -34,8 +40,7 @@ def getSchedule(id):
     return jsonify({
             '_id': str(ObjectId(schedule['_id'])),
             'idlocation':schedule['idlocation'],
-            'hours':schedule['hours'],
-            'descripcion':schedule['descripcion']
+            'horarios':schedule['horarios']
     })
 
 @app.route('/schedule/<id>', methods=['DELETE'])
@@ -47,8 +52,7 @@ def deleteSchedule(id):
 def updateSchedule(id):
     schedule_collection.update_one({'_id':ObjectId(id)}, {'$set':{
         'idlocation':request.json['idlocation'],
-        'hours':request.json['hours'],
-        'descripcion':request.json['descripcion']
+        'horarios':request.json['horarios']
     }})
     return jsonify({"msg": 'Schedule updated'})
 
