@@ -2,19 +2,25 @@ from app import app
 from config import client
 from flask import Flask, request,jsonify
 from flask_pymongo import PyMongo, ObjectId
+from datetime import datetime
 
 db = client.smep
 location_collection = db.locations
 
+fecha = datetime.now()
+fecha_string = fecha.strftime("%d/%m/%Y")
+
 @app.route('/locations', methods=['POST'])
 def createLocation():
+    if location_collection.find_one({"nombre": {"$eq": request.json['nombre']}}):
+        return jsonify({"msg": 'Location with that name already exists'})
     id = location_collection.insert_one({
         'nombre':request.json['nombre'],
-        'idsupervisor':request.json['idsupervisor'],
-        'fecharegistro':request.json['fecharegistro'],
+        'idsupervisor':"null",
+        'fecharegistro':fecha_string,
         'cupousuarios': request.json['cupousuarios'],
-        'idhorario': request.json['idhorario'],
-        'numusuarios': request.json['numusuarios']
+        'idhorario': "null",
+        'numusuarios': 0
     }).inserted_id
     return jsonify(str(id))
 

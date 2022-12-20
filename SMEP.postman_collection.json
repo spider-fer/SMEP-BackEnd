@@ -43,7 +43,7 @@
 					"response": []
 				},
 				{
-					"name": "geUsers",
+					"name": "getUsers",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -74,7 +74,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"fer\",\r\n    \"apellido\": \"hernandez\",\r\n    \"fecharegistro\": \"16/09/2019\",\r\n    \"correo\":\"fernanda.ht@gmail.com\",\r\n    \"contrasena\":\"Tulips\",\r\n    \"essupervisor\": false\r\n}"
+							"raw": "{\r\n    \"nombre\":\"Tulio\",\r\n    \"apellido\": \"Hernandez\",\r\n    \"fecharegistro\": \"08/11/2022\",\r\n    \"correo\":\"tulio.ht@gmail.com\",\r\n    \"contrasena\":\"tulip\",\r\n    \"essupervisor\": false\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/users",
@@ -106,7 +106,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/user/63461316fcd34073a5601963",
+							"raw": "http://localhost:5000/user/636acb5305b0d5715dde10f2",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -114,7 +114,7 @@
 							"port": "5000",
 							"path": [
 								"user",
-								"63461316fcd34073a5601963"
+								"636acb5305b0d5715dde10f2"
 							]
 						}
 					},
@@ -133,10 +133,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"fer\",\r\n    \"apellido\": \"hernandez\",\r\n    \"fecharegistro\": \"16/09/2019\",\r\n    \"correo\":\"fernanda.ht@gmail.com\",\r\n    \"contrasena\":\"Tulips\",\r\n    \"essupervisor\": false\r\n}"
+							"raw": "{\r\n    \"apellido\": \"Hernandez\",\r\n    \"contrasena\": \"Tulips\",\r\n    \"correo\": \"tulio.ht@gmail.com\",\r\n    \"essupervisor\": false,\r\n    \"fecharegistro\": \"08/11/2022\",\r\n    \"nombre\": \"Tulio\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/user/633663acb800b8853503ee1d",
+							"raw": "http://localhost:5000/user/636acb1405b0d5715dde10f1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -144,7 +144,166 @@
 							"port": "5000",
 							"path": [
 								"user",
-								"633663acb800b8853503ee1d"
+								"636acb1405b0d5715dde10f1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Supervisors",
+			"item": [
+				{
+					"name": "getSupervisor",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisor",
+								"636aaa1ceae04cd6f87e5478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteSupervisor",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisor/6372cc41912180103a9a8033",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisor",
+								"6372cc41912180103a9a8033"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateSupervisor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iduser\":123,\r\n    \"idlocation\": 1234,\r\n    \"fecharegistro\": \"16/09/2019\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisor",
+								"636aaa1ceae04cd6f87e5478"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getSupervisors",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createSupervisor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"iduser\":\"6372cbce37645636cdb5c433\" ,\r\n    \"idlocation\": \"6372cd09810485d2f60f43d5\" ,\r\n    \"fecharegistro\": \"08/11/2022\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/supervisors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"supervisors"
 							]
 						}
 					},
@@ -174,7 +333,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/location/63655630b8ce346b2372d7f1",
+							"raw": "http://localhost:5000/location/636ae2a863689807e18c20e7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -182,7 +341,7 @@
 							"port": "5000",
 							"path": [
 								"location",
-								"63655630b8ce346b2372d7f1"
+								"636ae2a863689807e18c20e7"
 							]
 						}
 					},
@@ -204,7 +363,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/location/63461316fcd34073a5601963",
+							"raw": "http://localhost:5000/location/6369f24f4e0bf6178bfe794d",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -212,7 +371,7 @@
 							"port": "5000",
 							"path": [
 								"location",
-								"63461316fcd34073a5601963"
+								"6369f24f4e0bf6178bfe794d"
 							]
 						}
 					},
@@ -293,7 +452,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"Laboratorio de pesados\",\r\n    \"idsupervisor\":123,\r\n    \"fecharegistro\": \"16/09/2019\",\r\n    \"cupousuarios\":30,\r\n    \"idhorario\":1234,\r\n    \"numusuarios\": 15\r\n}"
+							"raw": "{\r\n    \"nombre\":\"Laboratorio de Telematica 2\",\r\n    \"cupousuarios\":30\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/locations",
@@ -781,165 +940,6 @@
 							"port": "5000",
 							"path": [
 								"reservations"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Supervisors",
-			"item": [
-				{
-					"name": "getSupervisor",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"supervisor",
-								"636aaa1ceae04cd6f87e5478"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteSupervisor",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"supervisor",
-								"636aaa1ceae04cd6f87e5478"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateSupervisor",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"iduser\":123,\r\n    \"idlocation\": 1234,\r\n    \"fecharegistro\": \"16/09/2019\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:5000/supervisor/636aaa1ceae04cd6f87e5478",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"supervisor",
-								"636aaa1ceae04cd6f87e5478"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSupervisors",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5000/supervisors",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"supervisors"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "createReservation",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"iduser\":123,\r\n    \"idlocation\": 123,\r\n    \"fecharegistro\": \"16/09/2019\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:5000/supervisors",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"supervisors"
 							]
 						}
 					},

@@ -2,11 +2,15 @@ from app import app
 from config import client
 from flask import Flask, request,jsonify
 from flask_pymongo import PyMongo, ObjectId
+from datetime import datetime
 
 db = client.smep
 supervisor_collection = db.supervisor
 user_collection = db.users
 location_collection = db.locations
+
+fecha = datetime.now()
+fecha_string = fecha.strftime("%d/%m/%Y")
 
 @app.route('/supervisors', methods=['POST'])
 def createSupervisor():
@@ -20,7 +24,7 @@ def createSupervisor():
                 id = supervisor_collection.insert_one({
                     'iduser':user,
                     'idlocation':location,
-                    'fecharegistro':request.json['fecharegistro']
+                    'fecharegistro':fecha_string
                 }).inserted_id
                 location_collection.update_one({'_id':ObjectId(location)}, {'$set':{
                     'idsupervisor':str(id)

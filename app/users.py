@@ -2,21 +2,29 @@ from app import app
 from config import client
 from flask import Flask, request,jsonify
 from flask_pymongo import PyMongo, ObjectId
+from datetime import datetime
 
 db = client.smep
 user_collection = db.users
 
+fecha = datetime.now()
+fecha_string = fecha.strftime("%d/%m/%Y")
+
 @app.route('/users', methods=['POST'])
 def createUser():
-    id = user_collection.insert_one({
-        'nombre':request.json['nombre'],
-        'apellido':request.json['apellido'],
-        'fecharegistro':request.json['fecharegistro'],
-        'correo': request.json['correo'],
-        'contrasena': request.json['contrasena'],
-        'essupervisor': request.json['essupervisor'],
-    }).inserted_id
-    return jsonify(str(id))
+    if user_collection.find_one({"correo": {"$eq": request.json['correo']}}):
+        return jsonify({"msg": 'User with that email already exists'})
+    else:
+        id = user_collection.insert_one({
+            'nombre':request.json['nombre'],
+            'apellido':request.json['apellido'],
+            'fecharegistro':fecha_string,
+            'correo': request.json['correo'],
+            'contrasena': request.json['contrasena'],
+            'essupervisor': False,
+            'incidentes':0
+        }).inserted_id
+        return jsonify(str(id))
 
 @app.route('/users', methods=['GET'])
 def getUsers():
@@ -29,7 +37,8 @@ def getUsers():
             'fecharegistro':doc['fecharegistro'],
             'correo':doc['correo'],
             'contrasena':doc['contrasena'],
-            'essupervisor':doc['essupervisor']
+            'essupervisor':doc['essupervisor'],
+            'incidentes':doc['incidentes']
         })
     return (users)
 
@@ -44,7 +53,8 @@ def getUser(id):
         'fecharegistro':user['fecharegistro'],
         'correo':user['correo'],
         'contrasena':user['contrasena'],
-        'essupervisor':user['essupervisor']
+        'essupervisor':user['essupervisor'],
+        'incidentes':user['incidentes']
     })
 
 @app.route('/user/<id>', methods=['DELETE'])
@@ -61,6 +71,7 @@ def updateUser(id):
         'correo': request.json['correo'],
         'contrasena': request.json['contrasena'],
         'essupervisor': request.json['essupervisor'],
+        'incidentes': request.json['incidentes']
     }})
     return jsonify({"msg": 'User updated'})
 
