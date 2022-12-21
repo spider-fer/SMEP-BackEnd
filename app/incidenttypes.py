@@ -8,6 +8,8 @@ incidenttype_collection = db.incidenttypes
 
 @app.route('/incidenttypes', methods=['POST'])
 def createIncidentType():
+    if incidenttype_collection.find_one({"nombre": {"$eq": request.json['nombre']}}):
+        return jsonify({"msg": 'Incident Type with that name already exists'})
     id = incidenttype_collection.insert_one({
         'nombre':request.json['nombre'],
         'descripcion':request.json['descripcion'],
