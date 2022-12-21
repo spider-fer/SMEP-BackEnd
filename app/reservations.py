@@ -10,19 +10,39 @@ user_collection = db.users
 
 @app.route('/reservations', methods=['POST'])
 def createReservation():
-    locationid = request.json['idlocation']
-    user = request.json['iduser']
-    location = location_collection.find_one({'_id':ObjectId(locationid)})
-    cupousuarios = location['cupousuarios']
-    numusuarios = location['numusuarios']
-    if cupousuarios > numusuarios:
-        id = reservation_collection.insert_one({
-            'iduser':request.json['iduser'],
-            'idschedule':request.json['idschedule'],
-            'hora': request.json['hora'],
-            }).inserted_id
-        return jsonify(str(id))
+    #Variables introducidas
+    iduser = request.json['iduser']
+    idlocation = request.json['idlocation']
+    hora = request.json['hora']
+    fecha = request.json['fecha']
+    #Verificar que exista el usuario
+    if user_collection.find_one({"_id": {"$eq": iduser}}) and location_collection.find_one({"_id": {"$eq": idlocation}}):
+        return jsonify({"msg": 'User or location does not exists'})
+    #Verificar que el usuario no tenga otra reservacion a la misma hora y dia 
+    if reservation_collection.find_one({"iduser": {"$eq": iduser}, "hora":{"$eq": hora}, "fecha":{"$eq": fecha}}):
+        return jsonify({"msg": 'Reservation at that time already exists'})
+        
+    #Nos traemos la info de la locacion 
+    location = location_collection.find_one({'_id':ObjectId(idlocation)})
+    #Nos traemos la info de los horarios de la locacion
+    horarioinfo = location['horariosinfo']
 
+    for x in range(len(horarioinfo)):
+        if str(horarioinfo[x]["hora"]) == hora and horarioinfo[x]["cupousuarios"] > horarioinfo[x]["numusuarios"]:
+            horarioinfo[x]["numusuarios"] += 1
+            id = reservation_collection.insert_one({
+                'iduser':request.json['iduser'],
+                'idlocation':idlocation,
+                'hora': hora,
+                'fecha': fecha
+                }).inserted_id
+            location_collection.update_one({'_id':ObjectId(idlocation)}, {'$set':{
+                'horariosinfo':horarioinfo
+            }}) 
+            return jsonify(str(id))
+
+    return jsonify({"msg": 'Reservation not created'})
+   
 @app.route('/reservations', methods=['GET'])
 def getReservations():
     reservations =[]
@@ -30,7 +50,9 @@ def getReservations():
         reservations.append({
             '_id': str(ObjectId(doc['_id'])),
             'iduser':doc['iduser'],
-            'idschedule':doc['idschedule']
+            'idlocation':doc['idlocation'],
+            'hora':doc['hora'],
+            'fecha':doc['fecha'],
         })
     return (reservations)
 
@@ -41,7 +63,9 @@ def getReservation(id):
     return jsonify({
             '_id': str(ObjectId(reservation['_id'])),
             'iduser':reservation['iduser'],
-            'idschedule':reservation['idschedule']
+            'idlocation':reservation['idlocation'],
+            'hora':reservation['hora'],
+            'fecha':reservation['fecha']
     })
 
 @app.route('/reservation/<id>', methods=['DELETE'])
@@ -53,7 +77,9 @@ def deleteReservation(id):
 def updateReservation(id):
     reservation_collection.update_one({'_id':ObjectId(id)}, {'$set':{
         'iduser':request.json['iduser'],
-        'idschedule':request.json['idschedule']
+        'idlocation':request.json['idlocation'],
+        'hora':request.json['hora'],
+        'fecha':request.json['fecha']
     }})
     return jsonify({"msg": 'Reservation updated'})
 

@@ -19,9 +19,7 @@ def createLocation():
             'nombre':request.json['nombre'],
             'idsupervisor':"null",
             'fecharegistro':fecha_string,
-            'cupousuarios': request.json['cupousuarios'],
-            'idhorario': "null",
-            'numusuarios': 0
+            'horariosinfo': request.json['horariosinfo'],
         }).inserted_id
         return jsonify(str(id))
 
@@ -34,9 +32,7 @@ def getLocations():
             'nombre':doc['nombre'],
             'idsupervisor':doc['idsupervisor'],
             'fecharegistro':doc['fecharegistro'],
-            'cupousuarios':doc['cupousuarios'],
-            'idhorario':doc['idhorario'],
-            'numusuarios':doc['numusuarios']
+            'horariosinfo': doc['horariosinfo'],
         })
     return (locations)
 
@@ -49,9 +45,7 @@ def getLocation(id):
         'nombre':location['nombre'],
         'idsupervisor':location['idsupervisor'],
         'fecharegistro':location['fecharegistro'],
-        'cupousuarios':location['cupousuarios'],
-        'idhorario':location['idhorario'],
-        'numusuarios':location['numusuarios']
+        'horariosinfo': location['horariosinfo'],
     })
 
 @app.route('/location/<id>', methods=['DELETE'])
@@ -64,10 +58,8 @@ def updateLocation(id):
     location_collection.update_one({'_id':ObjectId(id)}, {'$set':{
         'nombre':request.json['nombre'],
         'idsupervisor':request.json['idsupervisor'],
-        'fecharegistro':request.json['fecharegistro'],
-        'cupousuarios': request.json['cupousuarios'],
-        'idhorario': request.json['idhorario'],
-        'numusuarios': request.json['numusuarios']
+        'fecharegistro':fecha_string,
+        'horariosinfo': request.json['horariosinfo'],
     }})
     return jsonify({"msg": 'Location updated'})
 

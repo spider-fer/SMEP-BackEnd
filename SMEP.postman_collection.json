@@ -363,7 +363,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/location/6369f24f4e0bf6178bfe794d",
+							"raw": "http://localhost:5000/location/63a224c0dd5bd8de5a9b3372",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -371,7 +371,7 @@
 							"port": "5000",
 							"path": [
 								"location",
-								"6369f24f4e0bf6178bfe794d"
+								"63a224c0dd5bd8de5a9b3372"
 							]
 						}
 					},
@@ -452,7 +452,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombre\":\"Laboratorio de Telematica 2\",\r\n    \"cupousuarios\":30\r\n}"
+							"raw": "{\r\n    \"nombre\":\"Laboratorio de Telematica 2\",\r\n    \"horariosinfo\":[\r\n        {\r\n            \"hora\":\"13:00 - 14:00\",\r\n            \"cupousuarios\":30,\r\n            \"numusuarios\":15\r\n        },\r\n        {\r\n            \"hora\":\"14:00 - 15:00\",\r\n            \"cupousuarios\":31,\r\n            \"numusuarios\":0\r\n        }\r\n    ]\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/locations",
@@ -630,165 +630,6 @@
 			]
 		},
 		{
-			"name": "Schedule",
-			"item": [
-				{
-					"name": "getSchedule",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5000/schedule/636a0431aa3547f6d1259498",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"schedule",
-								"636a0431aa3547f6d1259498"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteSchedule",
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5000/schedule/636a0431aa3547f6d1259498",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"schedule",
-								"636a0431aa3547f6d1259498"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateSchedule",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idlocation\":1234,\r\n    \"descripcion\": \"13:00 - 14:30\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:5000/schedule/636a0431aa3547f6d1259498",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"schedule",
-								"636a0431aa3547f6d1259498"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getSchedules",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:5000/schedules",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"schedules"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "createSchedule",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"idlocation\":123,\r\n    \"descripcion\": \"13:00 - 14:30\"\r\n}"
-						},
-						"url": {
-							"raw": "http://localhost:5000/schedules",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"schedules"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Reservation",
 			"item": [
 				{
@@ -840,7 +681,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:5000/reservation/636aa2a66686bfb5b74b71c5",
+							"raw": "http://localhost:5000/reservation/63a25e3d533d283e2ff6ab62",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -848,7 +689,7 @@
 							"port": "5000",
 							"path": [
 								"reservation",
-								"636aa2a66686bfb5b74b71c5"
+								"63a25e3d533d283e2ff6ab62"
 							]
 						}
 					},
@@ -929,7 +770,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"iduser\":123,\r\n    \"idschedule\": 123\r\n}"
+							"raw": "{\r\n    \"iduser\":\"63913ba98d0c63fa8b93d3ad\",\r\n    \"idlocation\": \"63a23e4c89d86ce491fcdc84\",\r\n    \"hora\": \"13:00 - 14:30\",\r\n    \"fecha\": \"20/12/2022\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/reservations",
